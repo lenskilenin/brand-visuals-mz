@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Visuals | Marzena Zielińska</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfbf9; /* Delikatny kremowy luksusowy odcień */
+            --text-color: #111111; /* Elegancka głęboka czerń */
+            --text-muted: #666666;
+            --accent-gold: #c5a880; /* Subtelny odcień beżu / rose gold */
+            --subtle-beige: #f5ece5;
+            --border-color: #e5dbd3;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            line-height: 1.7;
+            overflow-x: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- UKŁAD EDITORIAL Z ASYMETRYCZNYM SPISEM Z BOKU --- */
+        .page-container {
+            display: flex;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Stały lewy panel z nawigacją */
+        .sidebar {
+            width: 340px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            border-right: 1px solid var(--border-color);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: var(--bg-color);
+            z-index: 100;
+        }
+
+        .sidebar-logo-zone {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--subtle-beige);
+            padding-bottom: 20px;
+        }
+
+        .sidebar-logo-zone span {
+            display: block;
+            font-size: 11px;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-muted);
+            margin-top: 5px;
+            letter-spacing: 4px;
+        }
+
+        /* Ekskluzywna, minimalistyczna nawigacja */
+        .main-nav ul {
+            list-style: none;
+        }
+
+        .main-nav li {
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .main-nav a {
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 400;
+            transition: all 0.4s ease;
+            display: inline-block;
+        }
+
+        /* Efekt podświetlenia aktywnej sekcji podczas przewijania */
+        .main-nav a:hover, .main-nav a.active {
+            color: var(--accent-gold);
+            padding-left: 15px;
+            font-weight: 500;
+        }
+
+        .main-nav a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%) scaleX(0);
+            width: 8px;
+            height: 1px;
+            background-color: var(--accent-gold);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .main-nav a:hover::before, .main-nav a.active::before {
+            transform: translateY(-50%) scaleX(1);
+        }
+
+        /* Subtelna animacja aparatu / migawki w dolnej części menu */
+        .sidebar-footer {
+            font-size: 10px;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        .shutter-icon {
+            width: 24px;
+            height: 24px;
+            border: 1px solid var(--text-color);
+            border-radius: 50%;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            animation: pulse-aperture 4s infinite ease-in-out;
+        }
+
+        .shutter-icon::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent-gold);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes pulse-aperture {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.15); border-color: var(--accent-gold); opacity: 1; }
+        }
+
+        /* Główny kontent (prawa strona) */
+        .main-content {
+            margin-left: 340px;
+            width: calc(100% - 340px);
+            padding: 0;
+        }
+
+        /* Definicje sekcji */
+        section {
+            min-height: 100vh;
+            padding: 100px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-bottom: 1px solid var(--subtle-beige);
+        }
+
+        /* --- HOME SECTION --- */
+        #home {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('matte-black-macbook-pro-8insfbwi71cl42sg.jpg');
+            background-size: cover;
+            background-position: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px;
+        }
+
+        .logo-wrapper {
+            max-width: 320px;
+            margin: 20px auto 40px auto;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .logo-wrapper:hover {
+            transform: scale(1.03);
+        }
+
+        .logo-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .manifesto-box {
+            max-width: 750px;
+            margin-top: 20px;
+        }
+
+        .manifesto-box h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 300;
+            line-height: 1.5;
+            color: var(--text-color);
+            letter-spacing: 1px;
+        }
+
+        .manifesto-box h1 span {
+            display: block;
+            font-size: 13px;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            color: var(--text-muted);
+            margin-top: 20px;
+            font-weight: 300;
+        }
+
+        /* --- O MNIE SECTION --- */
+        #o-mnie {
+            background-color: var(--bg-color);
+        }
+
+        .grid-o-mnie {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 1px;
+            background-color: var(--accent-gold);
+            margin-top: 15px;
+        }
+
+        .o-mnie-text {
+            font-size: 14px;
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        .o-mnie-text p {
+            margin-bottom: 18px;
+        }
+
+        .highlight-paragraphs {
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .highlight-paragraphs .motto-line {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-style: italic;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            color: #8f7453;
+        }
+
+        .image-container-omnie {
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.02);
+        }
+
+        .image-container-omnie::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+            transform: skewX(-25deg);
+            transition: 0.8s;
+        }
+
+        .image-container-omnie:hover::before {
+            left: 125%;
+        }
+
+        .omnie-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .image-container-omnie:hover .omnie-img {
+            transform: scale(1.02);
+        }
+
+        /* --- REALIZACJE SECTION --- */
+        #realizacje {
+            background-color: #ffffff;
+        }
+
+        .gallery-category {
+            margin-bottom: 60px;
+        }
+
+        .gallery-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            color: var(--text-color);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: auto; /* Zdjęcia wyświetlają się w całości, bez przycinania */
+            transition: transform 0.4s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.03);
+        }
+
+        /* --- OFERTA SECTION --- */
+        #oferta {
+            background-color: var(--bg-color);
+        }
+
+        .oferta-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .oferta-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 45px 35px;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .oferta-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(143, 116, 83, 0.05);
+            border-color: var(--accent-gold);
+        }
+
+        .oferta-card-header h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .oferta-card-description {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .oferta-scope-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #8f7453;
+        }
+
+        .oferta-list {
+            list-style: none;
+        }
+
+        .oferta-list li {
+            font-size: 13px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+            display: flex;
+            align-items: center;
+        }
+
+        .oferta-list li::before {
+            content: '—';
+            margin-right: 10px;
+            color: var(--accent-gold);
+        }
+
+        /* --- KONTAKT SECTION --- */
+        #kontakt {
+            background-color: var(--subtle-beige);
+        }
+
+        .kontakt-flex {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .kontakt-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .kontakt-image-box {
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .kontakt-image-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+        }
+
+        .email-link {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 38px;
+            color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px solid var(--text-color);
+            padding-bottom: 5px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-bottom: 50px;
+        }
+
+        .email-link:hover {
+            color: #8f7453;
+            border-color: #8f7453;
+        }
+
+        .social-channels {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .social-item {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 13px;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .social-item:hover {
+            color: #8f7453;
+        }
+
+        .social-icon-wrapper {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        .social-icon-img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .social-item:hover .social-icon-wrapper {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(197, 168, 128, 0.2);
+        }
+
+        /* RWD - Dostosowanie do urządzeń mobilnych */
+        @media (max-width: 1024px) {
+            .page-container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding: 30px 20px;
+            }
+            .main-nav ul {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                margin-top: 20px;
+            }
+            .main-nav li {
+                margin: 5px 10px;
+            }
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+            section {
+                padding: 60px 20px;
+                min-height: auto;
+            }
+            .grid-o-mnie {
+                grid-template-columns: 1fr;
+            }
+            .oferta-grid {
+                grid-template-columns: 1fr;
+            }
+            .social-channels {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-container">
+        
+        <aside class="sidebar">
+            <div class="sidebar-logo-zone">
+                BV
+                <span>Brand Visuals</span>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#o-mnie">O mnie</a></li>
+                    <li><a href="#realizacje">Realizacje</a></li>
+                    <li><a href="#oferta">Oferta</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="shutter-icon"></div>
+                <p>&copy; 2026 Brand Visuals</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <section id="home">
+                <div class="manifesto-box">
+                    <div class="logo-wrapper">
+                        <img src="logo.png" alt="Brand Visuals Marzena Zielińska" class="logo-img">
+                    </div>
+                    
+                    <h1>
+                        Profesjonalny content. Autentyczny wizerunek. Spójna marka.
+                        <span>Estetyka & Premium Branding</span>
+                    </h1>
+                </div>
+            </section>
+
+            <section id="o-mnie">
+                <div class="grid-o-mnie">
+                    <div class="o-mnie-content">
+                        <h2 class="section-title">O mnie</h2>
+                        <div class="o-mnie-text">
+                            <p>Tworzę estetyczny content dla marek osobistych i biznesów, które chcą wyglądać profesjonalnie online.</p>
+                            <p>Łączę fotografię, reelsy i social media, tworząc spójny wizerunek marki - nowoczesny, autentyczny i przyciągający uwagę.</p>
+                            <p>Wierzę, że dobry content to coś więcej niż ładne zdjęcia. To sposób, w jaki marka jest odbierana, zapamiętywana i wybierana.</p>
+                            <p>Za każdą marką stoi historia. Moją rolą jest pokazać ją w estetyczny i nowoczesny sposób.</p>
+                            <p>Dbam nie tylko o wygląd marki, ale też o emocje i odbiór, jaki zostawia po sobie online.</p>
+                            
+                            <div class="highlight-paragraphs">
+                                <div class="motto-line">Estetyka przyciąga uwagę.</div>
+                                <div class="motto-line">Autentyczność buduje zaufanie.</div>
+                                <div class="motto-line" style="font-weight: 500; color: var(--text-color);">Dobry content robi jedno i drugie.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="o-mnie-image-zone">
+                        <div class="image-container-omnie">
+                            <img src="kobieta.jpg" alt="Praca przy laptopie - Marzena Zielińska" class="omnie-img">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="realizacje">
+                <h2 class="section-title">Realizacje</h2>
+                
+                <div class="gallery-category">
+                    <h3 class="gallery-title">Fotografia Kobieca</h3>
+                    <div class="gallery-grid">
+                        <img src="WhatsApp Image 2026-05-21 at 21.02.55.jpeg" alt="Fotografia Kobieca 1" class="gallery-img">
+                        <img src="WhatsApp Image 2026-05-21 at 21.02.55 (1).jpeg" alt="Fotografia Kobieca 2" class="gallery-img">
+                        <img src="WhatsApp Image 2026-05-21 at 21.02.55 (2).jpeg" alt="Fotografia Kobieca 3" class="gallery-img">
+                        <img src="WhatsApp Image 2026-05-21 at 21.02.55 (3).jpeg" alt="Fotografia Kobieca 4" class="gallery-img">
+                    </div>
+                </div>
+
+                <div class="gallery-category">
+                    <h3 class="gallery-title">Fotografia Lifestyle</h3>
+                    <div class="gallery-grid">
+                        <img src="WhatsApp Image 2026-05-21 at 21.10.59.jpeg" alt="Fotografia Lifestyle 1" class="gallery-img">
+                        <img src="WhatsApp Image 2026-05-21 at 21.10.59 (1).jpeg" alt="Fotografia Lifestyle 2" class="gallery-img">
+                        <img src="WhatsApp Image 2026-05-21 at 21.10.59 (2).jpeg" alt="Fotografia Lifestyle 3" class="gallery-img">
+                        <img src="WhatsApp Image 2026-05-21 at 21.10.59 (3).jpeg" alt="Fotografia Lifestyle 4" class="gallery-img">
+                    </div>
+                </div>
+
+                <div class="gallery-category">
+                    <h3 class="gallery-title">Fotografia Biznesowa</h3>
+                    <div class="gallery-grid">
+                        <img src="biznesowe_polowa_twarzy.jpg" alt="Biznesowe 1" class="gallery-img">
+                        <img src="biznesowe_ruda_kobieta.jpg" alt="Biznesowe 2" class="gallery-img">
+                        <img src="biznesowe_czarne_rekawiczki.jpg" alt="Biznesowe 3" class="gallery-img">
+                        <img src="biznesowe_blondynka_biuro.jpg" alt="Biznesowe 4" class="gallery-img">
+                    </div>
+                </div>
+            </section>
+
+            <section id="oferta">
+                <h2 class="section-title">Oferta</h2>
+                
+                <div class="oferta-grid">
+                    
+                    <div class="oferta-card">
+                        <div class="oferta-card-header">
+                            <h3>Social Media</h3>
+                            <p class="oferta-card-description">Pomagam markom budować spójny i profesjonalny wizerunek online poprzez estetyczny content i prowadzenie social media.</p>
+                        </div>
+                        <div>
+                            <h4 class="oferta-scope-title">Zakres:</h4>
+                            <ul class="oferta-list">
+                                <li>prowadzenie Instagram/Facebook</li>
+                                <li>planowanie contentu</li>
+                                <li>posty i grafiki</li>
+                                <li>stories</li>
+                                <li>strategia wizualna</li>
+                                <li>budowanie spójnego feedu</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="oferta-card">
+                        <div class="oferta-card-header">
+                            <h3>Fotografia</h3>
+                            <p class="oferta-card-description">Tworzę estetyczne fotografie dopasowane do charakteru marki, osoby i wyjątkowych momentów. Naturalne kadry i autentyczne emocje.</p>
+                        </div>
+                        <div>
+                            <h4 class="oferta-scope-title">Zakres:</h4>
+                            <ul class="oferta-list">
+                                <li>fotografia biznesowa i wizerunkowa</li>
+                                <li>fotografia kobieca</li>
+                                <li>fotografia lifestyle</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="oferta-card">
+                        <div class="oferta-card-header">
+                            <h3>Video & Reels</h3>
+                            <p class="oferta-card-description">Nagrywam i montuję dynamiczne reelsy oraz video, które przyciągają uwagę i budują nowoczesny wizerunek marki.</p>
+                        </div>
+                        <div>
+                            <h4 class="oferta-scope-title">Zakres:</h4>
+                            <ul class="oferta-list">
+                                <li>reels Instagram</li>
+                                <li>short form video</li>
+                                <li>backstage</li>
+                                <li>relacje z eventów</li>
+                                <li>video promocyjne</li>
+                                <li>montaż video</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="kontakt">
+                <div class="kontakt-flex">
+                    <div class="kontakt-info">
+                        <h2 class="section-title">Contact</h2>
+                        <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 15px;">Napisz do mnie</p>
+                        
+                        <a href="mailto:brandvisuals.mz@gmail.com" class="email-link">brandvisuals.mz@gmail.com</a>
+                        
+                        <div class="social-channels">
+                            <a href="https://www.instagram.com/brandvisuals.mz" target="_blank" class="social-item">
+                                <div class="social-icon-wrapper">
+                                    <img src="instagram.jpg" alt="Instagram Logo" class="social-icon-img">
+                                </div>
+                                <span>@brandvisuals.mz</span>
+                            </a>
+
+                            <a href="https://www.facebook.com/search/top?q=Brand%20Visuals%20Marzena%20Zieli%C5%84ska" target="_blank" class="social-item">
+                                <div class="social-icon-wrapper">
+                                    <img src="facebook.png" alt="Facebook Logo" class="social-icon-img">
+                                </div>
+                                <span>Brand Visuals Marzena Zielińska</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="kontakt-image-box">
+                        <img src="aparat_w_rekach.jpg" alt="Aparat - Kontakt">
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.main-nav ul li a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
