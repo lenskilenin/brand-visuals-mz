@@ -26,32 +26,40 @@
         }
 
         body {
-            /* Domyślne style dla tła */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            
             color: var(--text-color);
             font-family: 'Montserrat', sans-serif;
             font-weight: 300;
             line-height: 1.7;
             overflow-x: hidden;
             letter-spacing: 0.5px;
+            background-color: var(--bg-color);
         }
 
         /* TŁO DLA KOMPUTERÓW I TABLETÓW */
         @media (min-width: 1025px) {
             body {
                 background-image: url('tlo.jpg');
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+                background-repeat: no-repeat;
             }
         }
 
-        /* TŁO TYLKO DLA TELEFONÓW (I MAŁYCH TABLETÓW) */
+        /* POPRAWIONE TŁO TYLKO DLA TELEFONÓW (I MAŁYCH TABLETÓW) */
         @media (max-width: 1024px) {
-            body {
+            body::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
                 background-image: url('tlo-telefon.jpg');
-                background-position: center center; 
+                background-size: cover; /* can be changed to 'contain' if you want to see 100% of image without cutting edges, but 'cover' fits full phone screen perfectly */
+                background-position: center center;
+                background-repeat: no-repeat;
             }
         }
 
